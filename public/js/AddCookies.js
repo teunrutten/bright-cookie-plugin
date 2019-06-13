@@ -5,7 +5,7 @@ function AddCookies() {
   var analytics = null
   var tracking  = null
 
-  if ( ! notice || ! popup || buttons.length < 1) return
+  if ( ! notice || buttons.length < 1) return
 
   // If no consent has been give yet...
   if (!window.Cookies.get('bright_avg_cookie_consent')) {
@@ -13,8 +13,8 @@ function AddCookies() {
   }
 
   // If someone clicks to consent...
-  ;[...buttons].forEach(button => {
-    button.addEventListener('click', (e) => { 
+  Array.from(buttons).forEach( function(button) {
+    button.addEventListener('click', function(e) { 
       e.preventDefault()
       
       // Remove 'no consent given' cookie
@@ -22,13 +22,26 @@ function AddCookies() {
         window.Cookies.remove('bright_avg_no_cookie')
       }
 
-      var checkboxes = popup.querySelectorAll('.js-cookie-checkbox')
+      // Do we have a popup? Use the checkboxes
+      if ( popup ) {
+        var analytics_checkbox = popup.querySelector('.js-cookie-checkbox-analytics')
+        var tracking_checkbox = popup.querySelector('.js-cookie-checkbox-tracking')
 
-      // Check which checkboxes are checked
-      ;[...checkboxes].forEach(checkbox => {
-        tracking  = (checkbox.name === 'tracking') ? checkbox.checked : tracking
-        analytics = (checkbox.name === 'analytics') ? checkbox.checked : analytics 
-      })
+        // Analytics is ON if the checkbox is checked, or if there's no checkbox.
+        if ( ! analytics_checkbox || analytics_checkbox.checked ) {
+          analytics = true
+        }
+
+        // Tracking is ON if the checkbox is checked, or if there's no checkbox.
+        if ( ! tracking_checkbox || tracking_checkbox.checked ) {
+          tracking = true
+        }
+
+      // No popup? Use the data attr settings
+      } else {
+        tracking  = (notice.dataset.tracking === 'on') ? true : false
+        analytics = (notice.dataset.analytics === 'on') ? true : false
+      }
 
       // Set the correct cookie value
       setBrightCookieValue(analytics, tracking)

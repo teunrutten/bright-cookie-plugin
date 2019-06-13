@@ -11,7 +11,7 @@ function CookieNoticePopup() {
   if (! popupContainer) return
 
   // Open popup if click button
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', function(e) {
     e.preventDefault()
     openPopup(popup, popupContainer)
   })
@@ -32,14 +32,14 @@ function CookieNoticePopup() {
     // Close via element
     var closers = popup.querySelectorAll('.js-cookie-notice-popup-button')
   
-    ;[...closers].forEach(closer => {
-      closer.addEventListener('click', () => {
+    Array.from(closers).forEach( function(closer) {
+      closer.addEventListener('click', function() {
         closePopup(popup, popupContainer)
       })
     })
 
     // Close if click outside coverContainer
-    popup.addEventListener('click', e => {
+    popup.addEventListener('click', function(e) {
       if (! e.target.closest('.js-cookie-notice-popup-container')) {
         popup.classList.remove('active')
         bodyScrollLock.enableBodyScroll(popupContainer)

@@ -13,31 +13,20 @@ $consent = (! empty($_COOKIE['bright_avg_cookie_consent']) ) ? $_COOKIE['bright_
 
 $analytics_checked = '';
 $tracking_checked  = '';
+$analytics_default = 'data-analytics="off"';
+$tracking_default  = 'data-tracking="off"';
 $necessary         = esc_attr( get_option('cookie_content_necessary') );
-$tracking          = esc_attr( get_option('cookie_content_tracking') );
 $analytics         = esc_attr( get_option('cookie_content_analytics') );
+$tracking          = esc_attr( get_option('cookie_content_tracking') );
 
 // Checked by default in Settings?
 if ( $analytics === 'default_on' ) {
   $analytics_checked = 'checked';
+  $analytics_default = 'data-analytics="on"';
 }
 if ( $tracking === 'default_on' ) {
   $tracking_checked = 'checked';
-}
- 
-// Override the defaults with the consent set by user
-if ( $consent === 'analytics_tracking' ) {
-  $analytics_checked = 'checked';
-  $tracking_checked = 'checked';
-} elseif ( $consent === 'analytics' ) {
-  $analytics_checked = 'checked';
-  $tracking_checked = '';
-} elseif ( $consent === 'tracking' ) {
-  $tracking_checked = 'checked';
-  $analytics_checked = '';
-} elseif ( $consent === 'none' ) {
-  $tracking_checked = '';
-  $analytics_checked = '';
+  $tracking_default = 'data-tracking="on"';
 }
 
 // Values
@@ -56,7 +45,7 @@ function checkmarkContainer() {
 }
 ?>
 
-<div class="c-cookie-notice active js-cookie-notice c-cookie-notice--<?php echo $position; ?>">
+<div class="c-cookie-notice active js-cookie-notice c-cookie-notice--<?php echo $position; ?>" <?php echo $analytics_default . $tracking_default; ?>>
 
   <div class="c-cookie-notice__container">
 
@@ -125,7 +114,7 @@ function checkmarkContainer() {
             else : 
             ?>
             <label class="c-cookie-notice-popup__switch">
-              <input type="checkbox" name="analytics" value="true" class="c-cookie-notice-popup__checkbox js-cookie-checkbox" <?php echo $analytics_checked; ?>>
+              <input type="checkbox" name="analytics" value="true" class="c-cookie-notice-popup__checkbox js-cookie-checkbox-analytics" <?php echo $analytics_checked; ?>>
               <span class="c-cookie-notice-popup__slider"></span>
             </label>
             <?php endif; ?>
@@ -147,7 +136,7 @@ function checkmarkContainer() {
             else : 
             ?>
             <label class="c-cookie-notice-popup__switch">
-              <input type="checkbox" name="tracking" value="true" class="c-cookie-notice-popup__checkbox js-cookie-checkbox" <?php echo $tracking_checked; ?>>
+              <input type="checkbox" name="tracking" value="true" class="c-cookie-notice-popup__checkbox js-cookie-checkbox-tracking" <?php echo $tracking_checked; ?>>
               <span class="c-cookie-notice-popup__slider"></span>
             </label>
             <?php endif; ?>

@@ -84,6 +84,9 @@ class Bright_Cookie_Notice_Admin {
 	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_align' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_position' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_stylesheet' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_content_scripts' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_content_cookie_script' );
+
 
 	// 	// Stijl
 	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_font_size' );

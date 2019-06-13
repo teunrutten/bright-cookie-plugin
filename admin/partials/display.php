@@ -40,13 +40,34 @@
       <tbody>
 
         <tr>
-          <th scope="row">Stylesheet
+          <th scope="row">Stylesheets
           </th>
           <td>
             <select name="cookie_content_stylesheet">
-              <option value="max">Volledig</option>
-              <option value="mini">Minimum (alleen .active)</option>
+              <option value="max" <?php echo esc_attr( get_option('cookie_content_stylesheet') ) == 'max' ? 'selected="selected"' : ''; ?>>Alles laden</option>
+              <option value="mini" <?php echo esc_attr( get_option('cookie_content_stylesheet') ) == 'mini' ? 'selected="selected"' : ''; ?>>Minimum styles laden</option>
+              <option value="none" <?php echo esc_attr( get_option('cookie_content_stylesheet') ) == 'none' ? 'selected="selected"' : ''; ?>>Geen stylesheet laden</option>
             </select>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">Scripts
+          </th>
+          <td>
+            <select name="cookie_content_scripts">
+              <option value="max" <?php echo esc_attr( get_option('cookie_content_scripts') ) == 'max' ? 'selected="selected"' : ''; ?>>Alles laden</option>
+              <option value="mini" <?php echo esc_attr( get_option('cookie_content_scripts') ) == 'mini' ? 'selected="selected"' : ''; ?>>Geen popup code laden</option>
+              <option value="none" <?php echo esc_attr( get_option('cookie_content_scripts') ) == 'none' ? 'selected="selected"' : ''; ?>>Geen script laden</option>
+            </select>
+
+            <br /><br />
+            <fieldset>
+              <label for="js-cookie">
+                <input type="checkbox" name="cookie_content_cookie_script" id="js-cookie" <?php echo esc_attr( get_option('cookie_content_cookie_script') ) == 'on' ? 'checked' : ''; ?> />
+                js-cookie CDN laden
+              </label>
+            </fieldset>
           </td>
         </tr>
 
@@ -102,6 +123,7 @@
               <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
               <option value="off" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
             </select>
+            <p class="description">'Vinkje' en 'Niet tonen als optie' worden opgeslagen als toestemming.</p>
           </td>
         </tr>
 
@@ -115,6 +137,7 @@
               <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
               <option value="off" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
             </select>
+            <p class="description">'Vinkje' en 'Niet tonen als optie' worden opgeslagen als toestemming.</p>
           </td>
         </tr>
 

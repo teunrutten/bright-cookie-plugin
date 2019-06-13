@@ -2,8 +2,8 @@ function RemoveCookies() {
   var buttons = document.querySelectorAll('.js-delete-cookies')
   if (buttons.length < 1) return
 
-  ;[...buttons].forEach(button => {
-    button.addEventListener('click', (e) => {
+  Array.from(buttons).forEach( function(button) {
+    button.addEventListener('click', function(e) {
       e.preventDefault()
       removeCookieConsent()
     })
