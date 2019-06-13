@@ -12,7 +12,6 @@
 .c-cookie-notice__info a {
   color: #000;
   text-decoration: underline;
-  cursor: pointer;
 }
 
 .c-cookie-notice__info a:hover {

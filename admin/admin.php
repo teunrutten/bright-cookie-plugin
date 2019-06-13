@@ -40,7 +40,7 @@ class Bright_Cookie_Notice_Admin {
 	 */
 	public static function bright_options_page() {
     add_options_page(
-      'Cookies', //page_title
+      'Bright Cookie Notice', //page_title
       'Bright Cookie Notice', //menu_title,
       'manage_options', //capability
       'bright-cookie-notice', //menu_slug, 
@@ -56,18 +56,15 @@ class Bright_Cookie_Notice_Admin {
 	 * @since    1.0.0
 	 */
 	public static function bright_register_settings() {
-	// 	// Text placed in the cookie notice
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_content' );
+		// Text placed in the cookie notice
+		register_setting( 'bright-cookie-notice-settings', 'cookie_content_content' );
 
-	// 	// Link and text for the cookie content page
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_link_url' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_link_text' );
+		// Link and text for the cookie content page
+		register_setting( 'bright-cookie-notice-settings', 'cookie_content_link_url' );
+		register_setting( 'bright-cookie-notice-settings', 'cookie_content_link_text' );
 
-	// 	// Small line of text above the checkboxes
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_checkbox_intro' );
-
-	// 	// Text of the confirmation button
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_confirmation' );
+		// Text of the confirmation button
+		register_setting( 'bright-cookie-notice-settings', 'cookie_content_confirmation' );
 
 		// Settings
 		register_setting( 'bright-cookie-notice-settings', 'cookie_content_necessary' );
@@ -76,27 +73,25 @@ class Bright_Cookie_Notice_Admin {
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_popup' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_popup_anchor' );
 
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_necessary_name' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_analytics_name' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_tracking_name' );
-
 		// Styling
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_align' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_position' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_stylesheet' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_scripts' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_cookie_script' );
 
-
-	// 	// Stijl
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_font_size' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_background_color' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_content_color' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_check_color' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_check_background_color' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_button_color' );
-	// 	register_setting( 'bright-cookie-notice-settings', 'cookie_content_button_text_color' );
+    // Popup text
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_intro_title' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_intro' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_link_url' );
+		register_setting( 'bright-cookie-notice-settings', 'cookie_popup_link_text' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_functional_title' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_functional' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_analytics_title' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_analytics' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_tracking_title' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_tracking' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_confirmation' );
+    register_setting( 'bright-cookie-notice-settings', 'cookie_popup_confirmation_2' );
 	}
-
 
 }

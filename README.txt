@@ -1,8 +1,7 @@
-=== Plugin Name ===
+=== Bright Cookie Notice Plugin ===
 Contributors: linseybrander, teunrutten
-
-Really awesome cookie notice plugin
+Tags: plugin, cookie, wordpress
 
 == Description ==
 
-Work in progress
+Awesome cookie notice with popup.

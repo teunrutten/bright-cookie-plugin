@@ -2,7 +2,7 @@
 /*
 Plugin Name:       Bright Cookie Notice
 Plugin URI:        https://github.com/teunrutten/bright-cookie-plugin
-Description:       This plugin creates a cookie notice. It sets a cookie which can be used in tagmanager or php to include or disallow certain scripts.
+Description:       This plugin creates a cookie notice with popup, setting a cookie to use in tagmanager or php to include or disallow certain scripts.
 Version:           1.0.0
 Author:            Linsey Brander, Teun Rutten
 Author URI:        https://github.com/teunrutten/bright-cookie-plugin

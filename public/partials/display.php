@@ -8,9 +8,20 @@
 // Don't show if consent has already been given
 if (isset( $_COOKIE['bright_avg_cookie_consent'] )) return;
 
-// Which checkboxes need to be checked?
-$consent = (! empty($_COOKIE['bright_avg_cookie_consent']) ) ? $_COOKIE['bright_avg_cookie_consent'] : '';
+// Checkmark SVG
+function checkmarkContainer( $additionalClass = '' ) {
+  return '
+  <div class="c-cookie-notice-popup__category-icon-container '.$additionalClass.'">
+    <svg class="c-cookie-notice-popup__category-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M9 16.219l10.594-10.641 1.406 1.406-12 12-5.578-5.578 1.359-1.406z"></path>
+    </svg>
+  </div>
+  ';
+}
 
+/**
+ * Which checkboxes need to be checked? Which data attr?
+ */
 $analytics_checked = '';
 $tracking_checked  = '';
 $analytics_default = 'data-analytics="off"';
@@ -24,25 +35,38 @@ if ( $analytics === 'default_on' ) {
   $analytics_checked = 'checked';
   $analytics_default = 'data-analytics="on"';
 }
+// Checked by default in Settings?
 if ( $tracking === 'default_on' ) {
   $tracking_checked = 'checked';
   $tracking_default = 'data-tracking="on"';
 }
 
-// Values
-$show_popup   = esc_attr( get_option('cookie_content_popup') );
-$popup_anchor = esc_attr( get_option('cookie_content_popup_anchor') );
-$position     = esc_attr( get_option('cookie_content_position') );
+// Settings
+$show_popup     = esc_attr( get_option('cookie_content_popup') );
+$position       = esc_attr( get_option('cookie_content_position') );
 
-function checkmarkContainer() {
-  return '
-  <div class="c-cookie-notice-popup__category-icon-container">
-    <svg class="c-cookie-notice-popup__category-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M9 16.219l10.594-10.641 1.406 1.406-12 12-5.578-5.578 1.359-1.406z"></path>
-    </svg>
-  </div>
-  ';
-}
+// Notice texts
+$popup_anchor   = esc_attr( get_option('cookie_content_popup_anchor') );
+$content        = esc_attr( get_option('cookie_content_content') );
+$url            = esc_attr( get_option('cookie_content_link_url') );
+$url_text       = esc_attr( get_option('cookie_content_link_text') );
+$confirmation   = esc_attr( get_option('cookie_content_confirmation') );
+
+// Popup texts
+$popup_intro_title      = esc_attr( get_option('cookie_popup_intro_title') );
+$popup_intro            = esc_attr( get_option('cookie_popup_intro') );
+$popup_url              = esc_attr( get_option('cookie_popup_link_url') );
+$popup_url_text         = esc_attr( get_option('cookie_popup_link_text') );
+$popup_functional_title = esc_attr( get_option('cookie_popup_functional_title') );
+$popup_functional       = esc_attr( get_option('cookie_popup_functional') );
+$popup_analytics_title  = esc_attr( get_option('cookie_popup_analytics_title') );
+$popup_analytics        = esc_attr( get_option('cookie_popup_analytics') );
+$popup_tracking_title   = esc_attr( get_option('cookie_popup_tracking_title') );
+$popup_tracking         = esc_attr( get_option('cookie_popup_tracking') );
+$popup_confirmation     = esc_attr( get_option('cookie_popup_confirmation') );
+$popup_confirmation_2   = esc_attr( get_option('cookie_popup_confirmation_2') );
+
+if ($content === '') return;
 ?>
 
 <div class="c-cookie-notice active js-cookie-notice c-cookie-notice--<?php echo $position; ?>" <?php echo $analytics_default . $tracking_default; ?>>
@@ -50,12 +74,12 @@ function checkmarkContainer() {
   <div class="c-cookie-notice__container">
 
     <div class="c-cookie-notice__info">
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <a href="#">Read more</a></p>
+      <p><?php echo $content; ?> <?php if ($url) : ?><a href="<?php echo $url; ?>"><?php echo $url_text; ?></a><?php endif; ?></p>
     </div>
 
     <div class="c-cookie-notice__options">
       <div class="c-cookie-notice__accept js-confirm-cookie">
-        Cookies accepteren
+        <?php echo $confirmation; ?>
         <svg class="c-cookie-notice__accept-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M9 16.219l10.594-10.641 1.406 1.406-12 12-5.578-5.578 1.359-1.406z"></path>
         </svg>
@@ -81,17 +105,21 @@ function checkmarkContainer() {
 
       <div class="c-cookie-notice-popup__content">
 
+        <?php if ($popup_intro_title !== '') : ?>
         <div class="c-cookie-notice-popup__intro">
-          <h3 class="c-cookie-notice-popup__title">We value your privacy</h3>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <a href="#">Read more</a></p>
-          <div class="c-cookie-notice-popup__accept js-cookie-notice-popup-button js-confirm-cookie">Cookies accepteren</div>
+          <h3 class="c-cookie-notice-popup__title"><?php echo $popup_intro_title; ?></h3>
+          <p><?php echo $popup_intro; ?> <?php if ($popup_url) : ?><a href="<?php echo $popup_url; ?>"><?php echo $popup_url_text; ?></a><?php endif; ?></p>
+          <?php if ($popup_confirmation) : ?>
+            <div class="c-cookie-notice-popup__accept js-cookie-notice-popup-button js-confirm-cookie"><?php echo $popup_confirmation; ?></div>
+          <?php endif; ?>
         </div>
+        <?php endif; ?>
 
         <?php if ($necessary !== 'off') : ?>
         <div class="c-cookie-notice-popup__category">
           <div class="c-cookie-notice-popup__category-content">
-            <h4 class="c-cookie-notice-popup__subtitle">Functionele cookies</h4>
-            <p>Necessary cookies enable core functionality. The website cannot function with them.</p>
+            <h4 class="c-cookie-notice-popup__subtitle"><?php echo $popup_functional_title; ?></h4>
+            <p><?php echo $popup_functional; ?></p>
           </div>
 
           <div class="c-cookie-notice-popup__category-choice">
@@ -103,14 +131,14 @@ function checkmarkContainer() {
         <?php if ($analytics !== 'off') : ?>
         <div class="c-cookie-notice-popup__category">
           <div class="c-cookie-notice-popup__category-content">
-            <h4 class="c-cookie-notice-popup__subtitle">Analytische cookies</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+            <h4 class="c-cookie-notice-popup__subtitle"><?php echo $popup_analytics_title; ?></h4>
+            <p><?php echo $popup_analytics; ?></p>
           </div>
 
           <div class="c-cookie-notice-popup__category-choice">
             <?php 
             if ($analytics === 'checkmark') :
-              echo checkmarkContainer();
+              echo checkmarkContainer('js-cookie-checkmark-analytics');
             else : 
             ?>
             <label class="c-cookie-notice-popup__switch">
@@ -125,14 +153,14 @@ function checkmarkContainer() {
         <?php if ($tracking !== 'off') : ?>
         <div class="c-cookie-notice-popup__category">
           <div class="c-cookie-notice-popup__category-content">
-            <h4 class="c-cookie-notice-popup__subtitle">Tracking cookies</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+            <h4 class="c-cookie-notice-popup__subtitle"><?php echo $popup_tracking_title; ?></h4>
+            <p><?php echo $popup_tracking; ?></p>
           </div>
 
           <div class="c-cookie-notice-popup__category-choice">
             <?php 
             if ($tracking === 'checkmark') :
-              echo checkmarkContainer();
+              echo checkmarkContainer('js-cookie-checkmark-tracking');
             else : 
             ?>
             <label class="c-cookie-notice-popup__switch">
@@ -144,9 +172,11 @@ function checkmarkContainer() {
         </div>
         <?php endif; ?>
         
+        <?php if ($popup_confirmation_2) : ?>
         <div class="c-cookie-notice-popup__outro">
-          <div class="c-cookie-notice-popup__accept js-cookie-notice-popup-button js-confirm-cookie">Cookie instellingen opslaan</div>
+          <div class="c-cookie-notice-popup__accept js-cookie-notice-popup-button js-confirm-cookie"><?php echo $popup_confirmation_2; ?></div>
         </div>
+        <?php endif; ?>
       </div>
 
     </div>

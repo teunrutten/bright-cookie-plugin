@@ -24,16 +24,18 @@ function AddCookies() {
 
       // Do we have a popup? Use the checkboxes
       if ( popup ) {
-        var analytics_checkbox = popup.querySelector('.js-cookie-checkbox-analytics')
-        var tracking_checkbox = popup.querySelector('.js-cookie-checkbox-tracking')
+        var analytics_checkbox  = popup.querySelector('.js-cookie-checkbox-analytics')
+        var tracking_checkbox   = popup.querySelector('.js-cookie-checkbox-tracking')
+        var analytics_checkmark = popup.querySelector('.js-cookie-checkmark-analytics')
+        var tracking_checkmark  = popup.querySelector('.js-cookie-checkmark-tracking')
 
-        // Analytics is ON if the checkbox is checked, or if there's no checkbox.
-        if ( ! analytics_checkbox || analytics_checkbox.checked ) {
+        // Analytics is ON if there's a checkmark, or if the checkbox is checked.
+        if ( analytics_checkmark || (analytics_checkbox && analytics_checkbox.checked) ) {
           analytics = true
         }
 
-        // Tracking is ON if the checkbox is checked, or if there's no checkbox.
-        if ( ! tracking_checkbox || tracking_checkbox.checked ) {
+        // Tracking is ON if there's a checkmark, or if the checkbox is checked.
+        if ( tracking_checkmark || (tracking_checkbox && tracking_checkbox.checked) ) {
           tracking = true
         }
 

@@ -123,7 +123,7 @@
               <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
               <option value="off" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
             </select>
-            <p class="description">'Vinkje' en 'Niet tonen als optie' worden opgeslagen als toestemming.</p>
+            <p class="description">'Vinkje' wordt opgeslagen als toestemming.</p>
           </td>
         </tr>
 
@@ -137,7 +137,7 @@
               <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
               <option value="off" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
             </select>
-            <p class="description">'Vinkje' en 'Niet tonen als optie' worden opgeslagen als toestemming.</p>
+            <p class="description">'Vinkje' wordt opgeslagen als toestemming.</p>
           </td>
         </tr>
 
@@ -145,58 +145,174 @@
     </table>
 
     <!-- Notice -->
-    <!-- <h2 class="title">Notice</h2>
+    <h2 class="title">Cookiemelding teksten</h2>
     <hr/>
 
     <table class="form-table">
       <tbody>
+        
         <tr>
           <th scope="row">
-            <label for="content">Tekstvlak</label>
+            <label for="cookie_content_content">Tekstvlak</label>
           </th>
           <td>
-            <textarea name="cookie_content_content" id="content" rows="5" class="regular-text">Temp</textarea>
+            <textarea name="cookie_content_content" id="content" rows="5" class="regular-text" placeholder="Deze website gebruikt cookies..."><?php echo esc_attr( get_option('cookie_content_content') ); ?></textarea>
+            <p class="description">Laat leeg om cookiemelding te tonen.</p>
           </td>
         </tr>
+
         <tr>
           <th scope="row">
-            <label for="anchor">Beleid button: tekst</label>
+            <label for="cookie_content_confirmation">Bevestigingsbutton: tekst</label>
           </th>
           <td>
-            <input type="text" name="cookie_content_anchor" id="anchor" value="Temp" class="regular-text" />
+            <input type="text" name="cookie_content_confirmation" id="cookie_content_confirmation" class="regular-text" placeholder="Cookies accepteren" value="<?php echo esc_attr( get_option('cookie_content_confirmation') ); ?>" />
           </td>
         </tr>
+
         <tr>
           <th scope="row">
-            <label for="link">Beleid button: link</label>
+            <label for="cookie_content_link_url">Cookiebeleidpagina: link</label>
           </th>
           <td>
-            <input type="text" name="cookie_content_link" id="link" value="Temp" class="regular-text" />
+            <input type="text" name="cookie_content_link_url" id="cookie_content_link_url" class="regular-text" placeholder="/cookiebeleid" value="<?php echo esc_attr( get_option('cookie_content_link_url') ); ?>" />
+            <p class="description">Laat leeg om geen link te tonen.</p>
           </td>
         </tr>
+
         <tr>
           <th scope="row">
-            <label for="popup_anchor">Popup button: tekst</label>
+            <label for="cookie_content_link_text">Cookiebeleidpagina: tekst</label>
           </th>
           <td>
-            <input type="text" name="cookie_content_popup_anchor" id="popup_anchor" value="Temp" class="regular-text" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <label for="popup_link">Popup button: link</label>
-          </th>
-          <td>
-            <input type="text" name="cookie_content_popup_link" id="popup_link" value="Temp" class="regular-text" />
+            <input type="text" name="cookie_content_link_text" id="cookie_content_link_text" class="regular-text" placeholder="Meer informatie" value="<?php echo esc_attr( get_option('cookie_content_link_text') ); ?>" />
           </td>
         </tr>
 
       </tbody>
-    </table> -->
+    </table>
 
     <!-- Popup -->
-    <!-- <h2 class="title">Popup</h2> -->
-    <!-- <hr/> -->
+    <h2 class="title">Popup teksten</h2>
+    <hr/>
+
+    <table class="form-table">
+      <tbody>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_intro_title">Introductie: titel</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_intro_title" id="cookie_popup_intro_title" class="regular-text" placeholder="Wij respecteren uw privacy" value="<?php echo esc_attr( get_option('cookie_popup_intro_title') ); ?>" />
+            <p class="description">Laat leeg om geen introductie gedeelte te tonen.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_intro">Introductie: tekst</label>
+          </th>
+          <td>
+            <textarea name="cookie_popup_intro" id="content" rows="5" class="regular-text" placeholder="Lorem ipsum dolor sit amet..."><?php echo esc_attr( get_option('cookie_popup_intro') ); ?></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_link_url">Cookiebeleidpagina: link</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_link_url" id="cookie_popup_link_url" class="regular-text" placeholder="/cookiebeleid" value="<?php echo esc_attr( get_option('cookie_popup_link_url') ); ?>" />
+            <p class="description">Laat leeg om geen link te tonen.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_link_text">Cookiebeleidpagina: tekst</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_link_text" id="cookie_popup_link_text" class="regular-text" placeholder="Meer informatie" value="<?php echo esc_attr( get_option('cookie_popup_link_text') ); ?>" />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_functional_title">Functioneel: titel</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_functional_title" id="cookie_popup_functional_title" class="regular-text" placeholder="Functionele cookies" value="<?php echo esc_attr( get_option('cookie_popup_functional_title') ); ?>" />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_functional">Functioneel: tekst</label>
+          </th>
+          <td>
+            <textarea name="cookie_popup_functional" id="content" rows="5" class="regular-text" placeholder="Lorem ipsum dolor sit amet..."><?php echo esc_attr( get_option('cookie_popup_functional') ); ?></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_analytics_title">Analytisch: titel</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_analytics_title" id="cookie_popup_analytics_title" class="regular-text" placeholder="Analytische cookies" value="<?php echo esc_attr( get_option('cookie_popup_analytics_title') ); ?>" />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_analytics">Analytisch: tekst</label>
+          </th>
+          <td>
+            <textarea name="cookie_popup_analytics" id="content" rows="5" class="regular-text" placeholder="Lorem ipsum dolor sit amet..."><?php echo esc_attr( get_option('cookie_popup_analytics') ); ?></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_tracking_title">Tracking: titel</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_tracking_title" id="cookie_popup_tracking_title" class="regular-text" placeholder="Tracking cookies" value="<?php echo esc_attr( get_option('cookie_popup_tracking_title') ); ?>" />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_tracking">Tracking: tekst</label>
+          </th>
+          <td>
+            <textarea name="cookie_popup_tracking" id="content" rows="5" class="regular-text" placeholder="Lorem ipsum dolor sit amet..."><?php echo esc_attr( get_option('cookie_popup_tracking') ); ?></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_confirmation">Bevestigingsbutton #1: tekst</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_confirmation" id="cookie_popup_confirmation" class="regular-text" placeholder="Cookies accepteren" value="<?php echo esc_attr( get_option('cookie_popup_confirmation') ); ?>" />
+            <p class="description">Laat leeg om geen button te tonen.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <label for="cookie_popup_confirmation_2">Bevestigingsbutton #2: tekst</label>
+          </th>
+          <td>
+            <input type="text" name="cookie_popup_confirmation_2" id="cookie_popup_confirmation_2" class="regular-text" placeholder="Instellingen opslaan" value="<?php echo esc_attr( get_option('cookie_popup_confirmation_2') ); ?>" />
+            <p class="description">Laat leeg om geen button te tonen.</p>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
 
     <!-- Submit -->
     <?php submit_button(); ?>

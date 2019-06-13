@@ -7,8 +7,6 @@
 
 class Bright_Cookie_Notice_Activator {
 
-	public static function activate() {
-		// register_setting( 'Bright - cookie instellingen', 'bright_cookie_notice' );
-	}
+	public static function activate() {}
 
 }

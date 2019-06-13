@@ -25,13 +25,18 @@
 /*--- DETAILS ---*/
 
 .c-cookie-notice-popup__accept {
+  transition: background-color .5s ease-in-out;
   display: inline-block;
-  background-color: #000;
+  background-color: #6da56d;
   color: #fff;
   font-size: 1rem;
   line-height: 1;
   padding: .75rem 1rem;
   cursor: pointer;
+}
+
+.c-cookie-notice-popup__accept:hover {
+  background-color: #548554;
 }
 
 .c-cookie-notice-popup__intro p,
@@ -53,6 +58,16 @@
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: .5rem;
+}
+
+.c-cookie-notice-popup__intro a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.c-cookie-notice-popup__intro a:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 /*--- CHECK ICON ---*/
