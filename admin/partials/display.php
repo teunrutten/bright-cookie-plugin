@@ -23,6 +23,9 @@
   }
   </code>
 
+  <br/><br/>
+  <p>Je kan bezoekers hun instellingen laten wijzigen. De link moet de volgende class bevatten: <code>js-delete-cookies</code></p>
+
   <!-- Form -->
   <form method="post" action="options.php">
 

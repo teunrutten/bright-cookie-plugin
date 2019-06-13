@@ -12,3 +12,11 @@ if (class_exists('Bright_Cookie_Notice') ) {
   $cookie_notice->get_display();
 }
 ```
+
+You can give users the option to reset their cookie settings:
+
+```
+<div class="js-delete-cookies">
+  Cookie instellingen wijzigen
+</div>
+```
