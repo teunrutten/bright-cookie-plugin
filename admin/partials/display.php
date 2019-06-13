@@ -12,6 +12,17 @@
   <h1>Bright Cookie Notice</h1>
   <p>Met de onderstaande instellingen kunnen de instellingen, stijl en content voor de cookiemelding bepaald worden.</p>
 
+  <h2 class="title">Werking</h2>
+  <hr/>
+  <p>Plaats deze code waar je wilt dat de cookiemelding verschijnt:</p>
+
+  <code>
+  if (class_exists('Bright_Cookie_Notice') ) {
+    $cookie_notice = new Bright_Cookie_Notice();
+    $cookie_notice->get_display();
+  }
+  </code>
+
   <!-- Form -->
   <form method="post" action="options.php">
 
@@ -21,6 +32,7 @@
     ?>
 
     <!-- Settings -->
+    <br/>
     <h2 class="title">Instellingen</h2>
     <hr/>
 
@@ -43,11 +55,10 @@
           </th>
           <td>
             <select name="cookie_content_position">
-              <option value="fixed-top" <?php echo esc_attr( get_option('cookie_content_position') ) == 'fixed-top' ? 'selected="selected"' : ''; ?>>Meescrollen - Boven</option>
-              <option value="fixed-bottom" <?php echo esc_attr( get_option('cookie_content_position') ) == 'fixed-bottom' ? 'selected="selected"' : ''; ?>>Meescrollen - Onder</option>
+              <option value="fixed-bottom" <?php echo esc_attr( get_option('cookie_content_position') ) == 'fixed-bottom' ? 'selected="selected"' : ''; ?>>Meescrollen - Onderaan de pagina</option>
+              <option value="fixed-top" <?php echo esc_attr( get_option('cookie_content_position') ) == 'fixed-top' ? 'selected="selected"' : ''; ?>>Meescrollen - Bovenaan de pagina</option>
               <option value="relative" <?php echo esc_attr( get_option('cookie_content_position') ) == 'relative' ? 'selected="selected"' : ''; ?>>Relatief</option>
             </select>
-            <p class="description">Vergeet niet de functie blabla...</p>
           </td>
         </tr>
 
@@ -73,13 +84,11 @@
           <th scope="row">Noodzakelijke cookies
           </th>
           <td>
-            <fieldset>
-              <label for="necessary">
-                <input name="cookie_content_necessary" type="checkbox" id="necessary" <?php echo esc_attr( get_option('cookie_content_necessary') ) == 'on' ? 'checked="checked"' : ''; ?>>
-                Als optie tonen
-              </label>
-            </fieldset>
-            <p class="description">Noodzakelijke cookies staan altijd aan.</p>
+            <select name="cookie_content_necessary">
+              <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_necessary') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
+              <option value="off" <?php echo esc_attr( get_option('cookie_content_necessary') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
+            </select>
+            <p class="description">Noodzakelijke cookies hebben geen toestemming nodig.</p>
           </td>
         </tr>
 
@@ -87,18 +96,12 @@
           <th scope="row">Analytische cookies
           </th>
           <td>
-            <fieldset>
-              <label for="analytics">
-                <input name="cookie_content_analytics" type="checkbox" id="analytics" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'on' ? 'checked="checked"' : ''; ?>>
-                Als optie tonen
-              </label>
-            </fieldset>
-            <fieldset>
-              <label for="analytics_default">
-                <input name="cookie_content_analytics_default" type="checkbox" id="analytics_default" <?php echo esc_attr( get_option('cookie_content_analytics_default') ) == 'on' ? 'checked="checked"' : ''; ?>>
-                Standaard aangevinkt
-              </label>
-            </fieldset>
+            <select name="cookie_content_analytics">
+              <option value="default_off" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'default_off' ? 'selected="selected"' : ''; ?>>Uitgevinkt</option>
+              <option value="default_on" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'default_on' ? 'selected="selected"' : ''; ?>>Aangevinkt</option>
+              <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
+              <option value="off" <?php echo esc_attr( get_option('cookie_content_analytics') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
+            </select>
           </td>
         </tr>
 
@@ -106,18 +109,12 @@
           <th scope="row">Tracking cookies
           </th>
           <td>
-            <fieldset>
-              <label for="tracking">
-                <input name="cookie_content_tracking" type="checkbox" id="tracking" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'on' ? 'checked="checked"' : ''; ?>>
-                Als optie tonen
-              </label>
-            </fieldset>
-            <fieldset>
-              <label for="tracking_default">
-                <input name="cookie_content_tracking_default" type="checkbox" id="tracking_default" <?php echo esc_attr( get_option('cookie_content_tracking_default') ) == 'on' ? 'checked="checked"' : ''; ?>>
-                Standaard aangevinkt
-              </label>
-            </fieldset>
+            <select name="cookie_content_tracking">
+              <option value="default_off" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'default_off' ? 'selected="selected"' : ''; ?>>Uitgevinkt</option>
+              <option value="default_on" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'default_on' ? 'selected="selected"' : ''; ?>>Aangevinkt</option>
+              <option value="checkmark" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'checkmark' ? 'selected="selected"' : ''; ?>>Vinkje</option>
+              <option value="off" <?php echo esc_attr( get_option('cookie_content_tracking') ) == 'off' ? 'selected="selected"' : ''; ?>>Niet tonen als optie</option>
+            </select>
           </td>
         </tr>
 

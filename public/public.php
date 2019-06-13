@@ -49,8 +49,8 @@ class Bright_Cookie_Notice_Public {
 	 * @since    1.0.0
 	 */
 	public static function bright_display_cookie() {
-		// if(!isset( $_COOKIE['bright_avg_cookie_consent'] )) {
+		if(!isset( $_COOKIE['bright_avg_cookie_consent'] )) {
 			include(plugin_dir_path( __FILE__ ) . 'partials/display.php');
-		// }
+		}
 	}
 }

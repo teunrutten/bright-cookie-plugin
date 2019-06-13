@@ -73,8 +73,6 @@ class Bright_Cookie_Notice_Admin {
 		register_setting( 'bright-cookie-notice-settings', 'cookie_content_necessary' );
 		register_setting( 'bright-cookie-notice-settings', 'cookie_content_analytics' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_tracking' );
-    register_setting( 'bright-cookie-notice-settings', 'cookie_content_analytics_default' );
-    register_setting( 'bright-cookie-notice-settings', 'cookie_content_tracking_default' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_popup' );
     register_setting( 'bright-cookie-notice-settings', 'cookie_content_popup_anchor' );
 

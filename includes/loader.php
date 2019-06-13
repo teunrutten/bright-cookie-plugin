@@ -56,8 +56,6 @@ class Bright_Cookie_Notice_Loader {
 		$this->actions = $this->add( $this->actions, 'admin_init', 'Bright_Cookie_Notice_Admin', 'bright_register_settings', $priority, $accepted_args );
 
     // Public actions
-    $this->actions = $this->add( $this->actions, 'wp_footer', 'Bright_Cookie_Notice_Public', 'bright_display_cookie', $priority, $accepted_args );
-
 		// // Check if cookie should be loaded in the header or footer
 		// $align = get_option('cookie_content_align');
 		// if ($align === 'bottom') {

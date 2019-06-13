@@ -186,6 +186,19 @@ class Bright_Cookie_Notice {
 	 */
 	public function get_version() {
 		return $this->version;
+  }
+  
+  /**
+	 * Display the cookie notice on the front-end.
+   * Paste it in your theme where you want to show the cookie notice.
+	 *
+	 * @since     1.0.0
+	 * @return    string    The version number of the plugin.
+	 */
+	public function get_display() {
+    $plugin_public = new Bright_Cookie_Notice_Public( $this->get_plugin_name(), $this->get_version() );
+    
+    $plugin_public->bright_display_cookie();
 	}
 
 }
