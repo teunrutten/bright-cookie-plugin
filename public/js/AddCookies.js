@@ -69,7 +69,7 @@ function AddCookies() {
           expires: 365
         }
       )
-
+      
     } else if (analytics) {
       window.Cookies.set('bright_avg_cookie_consent', 'analytics', {
         expires: 1
@@ -84,6 +84,11 @@ function AddCookies() {
       window.Cookies.set('bright_avg_cookie_consent', 'none', {
         expires: 1
       })
+    }
+
+    // Refresh so all elements are loaded
+    if (window.Cookies.get('bright_avg_cookie_consent')) {
+      window.location.reload()
     }
   }
 
