@@ -47,7 +47,7 @@ $position       = esc_attr( get_option('cookie_content_position') );
 
 // Notice texts
 $popup_anchor   = esc_attr( get_option('cookie_content_popup_anchor') );
-$content        = esc_attr( get_option('cookie_content_content') );
+$content        = get_option('cookie_content_content');
 $url            = esc_attr( get_option('cookie_content_link_url') );
 $url_text       = esc_attr( get_option('cookie_content_link_text') );
 $confirmation   = esc_attr( get_option('cookie_content_confirmation') );
@@ -74,11 +74,11 @@ if ($content === '') return;
   <div class="c-cookie-notice__container">
 
     <div class="c-cookie-notice__info">
-      <p><?php echo $content; ?> <?php if ($url) : ?><a href="<?php echo $url; ?>"><?php echo $url_text; ?></a><?php endif; ?></p>
+      <?php echo apply_filters('the_content', $content); ?> <?php if ($url) : ?><a href="<?php echo $url; ?>"><?php echo $url_text; ?></a><?php endif; ?>
     </div>
 
     <div class="c-cookie-notice__options">
-      <div class="c-cookie-notice__accept js-confirm-cookie">
+      <div class="c-cookie-notice__accept js-confirm-all-cookies">
         <?php echo $confirmation; ?>
         <svg class="c-cookie-notice__accept-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M9 16.219l10.594-10.641 1.406 1.406-12 12-5.578-5.578 1.359-1.406z"></path>

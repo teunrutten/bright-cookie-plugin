@@ -33,11 +33,11 @@
 
 .c-cookie-notice__container {
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .c-cookie-notice__options {
-  margin-top: .75rem;
+  margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -46,7 +46,7 @@
 
 .c-cookie-notice__accept,
 .c-cookie-notice__manage {
-  margin: .25rem 0;
+  margin: 0.25rem 0;
 }
 
 .c-cookie-notice__accept {
@@ -54,7 +54,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
   .c-cookie-notice__container {
     max-width: 1440px;
     margin: 0 auto;
@@ -63,12 +62,12 @@
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .c-cookie-notice__info {
     width: 70%;
     padding-right: 2rem;
   }
-  
+
   .c-cookie-notice__options {
     width: 30%;
     justify-content: flex-end;
@@ -82,5 +81,4 @@
   .c-cookie-notice__accept {
     margin-right: 0; /*reset*/
   }
-
 }
