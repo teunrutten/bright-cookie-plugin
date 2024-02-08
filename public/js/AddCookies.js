@@ -2,7 +2,7 @@ function AddCookies() {
   var notice = document.querySelector('.js-cookie-notice')
   var popup = document.querySelector('.js-cookie-notice-popup')
   var buttons = document.querySelectorAll('.js-confirm-cookie')
-  var comfirmAll = document.querySelector('.js-confirm-all-cookies')
+  var confirmAllButtons = document.querySelectorAll('.js-confirm-all-cookies')
   var analytics = null
   var tracking = null
 
@@ -14,21 +14,23 @@ function AddCookies() {
   }
 
   // If someone clicks the confirm all button
-  comfirmAll.addEventListener('click', function(e) {
-    analytics = true
-    tracking = true
-
-    setBrightCookieValue(analytics, tracking)
-
-    // Hide the cookie notice after consent has been given
-    if (window.Cookies.get('bright_avg_cookie_consent')) {
-      notice.classList.remove('active')
-    }
-
-    // Remove 'no consent given' cookie
-    if (window.Cookies.get('bright_avg_no_cookie')) {
-      window.Cookies.remove('bright_avg_no_cookie')
-    }
+  Array.from(confirmAllButtons).forEach(function(confirmAll) {
+    confirmAll.addEventListener('click', function(e) {
+      analytics = true
+      tracking = true
+  
+      setBrightCookieValue(analytics, tracking)
+  
+      // Hide the cookie notice after consent has been given
+      if (window.Cookies.get('bright_avg_cookie_consent')) {
+        notice.classList.remove('active')
+      }
+  
+      // Remove 'no consent given' cookie
+      if (window.Cookies.get('bright_avg_no_cookie')) {
+        window.Cookies.remove('bright_avg_no_cookie')
+      }
+    })
   })
 
   // If someone clicks to consent...
