@@ -95,27 +95,49 @@ function AddCookies() {
    * on analytics and tracking
    */
   function setBrightCookieValue(analytics, tracking) {
+    window.dataLayer = window.dataLayer || []
+
     if (analytics && tracking) {
       window.Cookies.set('bright_avg_cookie_consent', 'analytics_tracking', {
         expires: 365
+      })
+
+      window.dataLayer.push({
+        event: 'bright_avg_cookie_consent',
+        value: 'analytics_tracking'
       })
     } else if (analytics) {
       window.Cookies.set('bright_avg_cookie_consent', 'analytics', {
         expires: 1
       })
+
+      window.dataLayer.push({
+        event: 'bright_avg_cookie_consent',
+        value: 'analytics'
+      })
     } else if (tracking) {
       window.Cookies.set('bright_avg_cookie_consent', 'tracking', {
         expires: 365
+      })
+
+      window.dataLayer.push({
+        event: 'bright_avg_cookie_consent',
+        value: 'tracking'
       })
     } else {
       window.Cookies.set('bright_avg_cookie_consent', 'none', {
         expires: 1
       })
+
+      window.dataLayer.push({
+        event: 'bright_avg_cookie_consent',
+        value: 'none'
+      })
     }
 
-    // Refresh so all elements are loaded
-    if (window.Cookies.get('bright_avg_cookie_consent')) {
-      window.location.reload()
-    }
+    // // Refresh so all elements are loaded
+    // if (window.Cookies.get('bright_avg_cookie_consent')) {
+    //   window.location.reload()
+    // }
   }
 }
